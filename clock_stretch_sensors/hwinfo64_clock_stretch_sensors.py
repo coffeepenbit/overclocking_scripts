@@ -18,6 +18,7 @@ NTHREADS = 12
 REG_FILE_PATH = pathlib.Path("~/Desktop/clock_stretch.reg").expanduser()
 
 
+clock_stretch_names = []
 with open(REG_FILE_PATH, "w") as reg:
     reg.write("Windows Registry Editor Version 5.00\n\n")
 
@@ -26,10 +27,17 @@ with open(REG_FILE_PATH, "w") as reg:
 
         core = thread // 2
         core_thread = thread % 2
-        reg.write(f"\"Name\"=\"Clock Stretch Core {str(core)} T{core_thread}\"\n")
-
+        clock_stretch_name = f"\"Clock Stretch Core {str(core)} T{core_thread}\""
+        reg.write(f"\"Name\"={clock_stretch_name}\n")
+        clock_stretch_names.append(clock_stretch_name)
 
         perf = CORE_PERF[str(core)]
         thread_usage = f"Core {core} T{core_thread} Effective Clock"
 
         reg.write(f"\"Value\"=\"\\\"{perf}\\\" - \\\"{thread_usage}\\\"\"\n\n")
+
+    # Aggregate of other clocks
+    reg.write(f"[HKEY_CURRENT_USER\\SOFTWARE\\HWiNFO64\\Sensors\\Custom\\Clock Stretch\\Clock{NTHREADS}]\n")
+    reg.write(f"\"Name\"=\"Clock Stretch Aggregate Max\"\n")
+    string_escaped_clock_stretch_names = [name.replace('"', '\\\"') for name in clock_stretch_names]
+    reg.write(f"\"Value\"=\"max({', '.join(string_escaped_clock_stretch_names)})\"\n")

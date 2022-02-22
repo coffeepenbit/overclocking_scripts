@@ -1,0 +1,50 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\Sensors\Custom\Clock Stretch\Clock0]
+"Name"="Clock Stretch Core 0 T0"
+"Value"="\"Core 0 Clock (perf #2/3)\" - \"Core 0 T0 Effective Clock\""
+
+[HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\Sensors\Custom\Clock Stretch\Clock1]
+"Name"="Clock Stretch Core 0 T1"
+"Value"="\"Core 0 Clock (perf #2/3)\" - \"Core 0 T1 Effective Clock\""
+
+[HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\Sensors\Custom\Clock Stretch\Clock2]
+"Name"="Clock Stretch Core 1 T0"
+"Value"="\"Core 1 Clock (perf #1/1)\" - \"Core 1 T0 Effective Clock\""
+
+[HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\Sensors\Custom\Clock Stretch\Clock3]
+"Name"="Clock Stretch Core 1 T1"
+"Value"="\"Core 1 Clock (perf #1/1)\" - \"Core 1 T1 Effective Clock\""
+
+[HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\Sensors\Custom\Clock Stretch\Clock4]
+"Name"="Clock Stretch Core 2 T0"
+"Value"="\"Core 2 Clock (perf #3/4)\" - \"Core 2 T0 Effective Clock\""
+
+[HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\Sensors\Custom\Clock Stretch\Clock5]
+"Name"="Clock Stretch Core 2 T1"
+"Value"="\"Core 2 Clock (perf #3/4)\" - \"Core 2 T1 Effective Clock\""
+
+[HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\Sensors\Custom\Clock Stretch\Clock6]
+"Name"="Clock Stretch Core 3 T0"
+"Value"="\"Core 3 Clock (perf #1/2)\" - \"Core 3 T0 Effective Clock\""
+
+[HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\Sensors\Custom\Clock Stretch\Clock7]
+"Name"="Clock Stretch Core 3 T1"
+"Value"="\"Core 3 Clock (perf #1/2)\" - \"Core 3 T1 Effective Clock\""
+
+[HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\Sensors\Custom\Clock Stretch\Clock8]
+"Name"="Clock Stretch Core 4 T0"
+"Value"="\"Core 4 Clock (perf #5/6)\" - \"Core 4 T0 Effective Clock\""
+
+[HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\Sensors\Custom\Clock Stretch\Clock9]
+"Name"="Clock Stretch Core 4 T1"
+"Value"="\"Core 4 Clock (perf #5/6)\" - \"Core 4 T1 Effective Clock\""
+
+[HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\Sensors\Custom\Clock Stretch\Clock10]
+"Name"="Clock Stretch Core 5 T0"
+"Value"="\"Core 5 Clock (perf #4/5)\" - \"Core 5 T0 Effective Clock\""
+
+[HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\Sensors\Custom\Clock Stretch\Clock11]
+"Name"="Clock Stretch Core 5 T1"
+"Value"="\"Core 5 Clock (perf #4/5)\" - \"Core 5 T1 Effective Clock\""
+

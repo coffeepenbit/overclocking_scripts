@@ -11,7 +11,8 @@ if($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administr
 } else {
     Write-Output $PSScriptRoot
     Push-Location $PSScriptRoot
-    Get-Location
+    # Reset to stock GPU settings to avoid crash after resetting power play table
+    OverdriveNTool -c0"stock w/ fan curve"
     reg import delete_power_play.reg
 
     if($NoRestart -eq $false)

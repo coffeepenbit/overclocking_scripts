@@ -19,25 +19,36 @@ REG_FILE_PATH = pathlib.Path("~/Desktop/clock_stretch.reg").expanduser()
 
 
 clock_stretch_names = []
+clock_stretch_names_positive = []
 with open(REG_FILE_PATH, "w") as reg:
     reg.write("Windows Registry Editor Version 5.00\n\n")
 
     for thread in range(NTHREADS):
-        reg.write(f"[HKEY_CURRENT_USER\\SOFTWARE\\HWiNFO64\\Sensors\\Custom\\Clock Stretch\\Clock{thread}]\n")
-
         core = thread // 2
         core_thread = thread % 2
+
+        reg.write(f"[HKEY_CURRENT_USER\\SOFTWARE\\HWiNFO64\\Sensors\\Custom\\Clock Stretch\\Clock{thread}]\n")
         clock_stretch_name = f"\"Clock Stretch Core {str(core)} T{core_thread}\""
         reg.write(f"\"Name\"={clock_stretch_name}\n")
         clock_stretch_names.append(clock_stretch_name)
-
         perf = CORE_PERF[str(core)]
         thread_usage = f"Core {core} T{core_thread} Effective Clock"
-
         reg.write(f"\"Value\"=\"\\\"{perf}\\\" - \\\"{thread_usage}\\\"\"\n\n")
 
+        reg.write(f"[HKEY_CURRENT_USER\\SOFTWARE\\HWiNFO64\\Sensors\\Custom\\Clock Stretch\\Clock{NTHREADS + thread}]\n")
+        clock_stretch_name_positive = f"\"Clock Stretch Core {str(core)} T{core_thread} (Positive)\""
+        reg.write(f"\"Name\"={clock_stretch_name_positive}\n")
+        clock_stretch_names_positive.append(clock_stretch_name_positive)
+        name = clock_stretch_name.replace('"', '\\\"')
+        reg.write(f"\"Value\"=\"max(0, {name})\"\n\n")
+
     # Aggregate of other clocks
-    reg.write(f"[HKEY_CURRENT_USER\\SOFTWARE\\HWiNFO64\\Sensors\\Custom\\Clock Stretch\\Clock{NTHREADS}]\n")
-    reg.write(f"\"Name\"=\"Clock Stretch Aggregate Max\"\n")
+    reg.write(f"[HKEY_CURRENT_USER\\SOFTWARE\\HWiNFO64\\Sensors\\Custom\\Clock Stretch\\Clock{2*NTHREADS}]\n")
+    reg.write("\"Name\"=\"Clock Stretch Aggregate Max\"\n")
     string_escaped_clock_stretch_names = [name.replace('"', '\\\"') for name in clock_stretch_names]
+    reg.write(f"\"Value\"=\"max({', '.join(string_escaped_clock_stretch_names)})\"\n\n")
+
+    reg.write(f"[HKEY_CURRENT_USER\\SOFTWARE\\HWiNFO64\\Sensors\\Custom\\Clock Stretch\\Clock{2*NTHREADS + 1}]\n")
+    reg.write("\"Name\"=\"Clock Stretch Aggregate Max (Positive)\"\n")
+    string_escaped_clock_stretch_names = [name.replace('"', '\\\"') for name in clock_stretch_names_positive]
     reg.write(f"\"Value\"=\"max({', '.join(string_escaped_clock_stretch_names)})\"\n")
